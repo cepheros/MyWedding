@@ -1,2 +1,12 @@
-vender/
-.settings
+vendor/
+composer.lock
+data/cache
+data/logs
+data/sys
+nbproject
+*~
+.idea
+.DS_Store
+*.pfx
+*.pem
+

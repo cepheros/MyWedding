@@ -9,10 +9,11 @@
     "homepage": "http://framework.zend.com/",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "2.*",
-        "zendframework/zend-developer-tools" : "dev-master",
+        "zendframework/zendframework": "master-dev",
+        "zendframework/zend-developer-tools" : "master-dev",
 	"doctrine/orm" : "master-dev",
 	"doctrine/doctrine-orm-module" : "master-dev",
-	"symfony/serializer" : "*"
-    }
+	"symfony/serializer" : "master-dev"
+    },
+    "minimum-stability" : "dev"
 }
