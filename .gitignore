@@ -9,4 +9,6 @@ nbproject
 .DS_Store
 *.pfx
 *.pem
-
+.buildpath
+.project
+.settings
