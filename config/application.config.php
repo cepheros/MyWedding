@@ -4,9 +4,9 @@ return array(
         'Application',
         'Core',
         'Skel',
-	'ZendDeveloperTools'
-	'DoctrineModule',
-	'DoctrineORMModule'
+		'ZendDeveloperTools',
+		'DoctrineModule',
+		'DoctrineORMModule'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
