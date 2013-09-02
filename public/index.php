@@ -9,7 +9,7 @@ defined('SYSCONFIGS_PATH')
 || define('SYSCONFIGS_PATH', realpath(dirname(__FILE__) . '/../data/configs'));
 
 // Setup autoloading
-include 'init_autoloader.php';
+include dirname(__FILE__) . '/../vendor/autoload.php';
 
 // Run the application!
 Zend\Mvc\Application::init(include 'config/application.config.php')->run();

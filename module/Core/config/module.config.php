@@ -48,9 +48,18 @@ return array(
 	    					)
 	    			));
 	    			
+	    			$cache->clearExpired();	    			
 	    			return $cache;
 	    		
-	    		} 
+	    		},
+	    		'Zend\Log' => function ($sm) {
+	    			$today= date('Y-m-d');
+	    			$log = new Zend\Log\Logger();
+	    			$writer = new Zend\Log\Writer\Stream(__DIR__ . '/../../../data/logs/' . $today .'.log');
+	    			$log->addWriter($writer);
+	    		
+	    			return $log;
+	    		},
 		)
     )
 );
