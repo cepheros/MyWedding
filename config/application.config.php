@@ -3,7 +3,7 @@ return array(
     'modules' => array(
         'Application',
         'Core',
-        'Skel',
+     //  'Skel',
 		'ZendDeveloperTools',
 		'DoctrineModule',
 		'DoctrineORMModule'

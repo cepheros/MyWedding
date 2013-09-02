@@ -8,6 +8,8 @@ use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\Factory as InputFactory;
 
 /** 
+ * Users
+ * 
  * @ORM\Entity
  * @ORM\Table(name="tblsystem_users")
  */
@@ -31,14 +33,14 @@ class Users extends OrmEntity
     protected $fullName;
 
     /**
-     * @ORM\Column(type="string",length=50)
+     * @ORM\Column(type="string",length=50,unique=true)
      * @var string
      */
 
     protected $userName;
 
     /**
-     * @ORM\Column(type="string",length=25,unique=true)
+     * @ORM\Column(type="string",length=25)
      * @var string
      */
 
@@ -274,7 +276,7 @@ class Users extends OrmEntity
                                     'options' => array(
                                             'encoding' => 'UTF-8',
                                             'min'      => 1,
-                                            'max'      => 25,
+                                            'max'      => 50,
                                     ),
                             ),
                     ),

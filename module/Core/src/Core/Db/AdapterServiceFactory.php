@@ -21,8 +21,8 @@ class AdapterServiceFactory implements FactoryInterface
             $moduleName = $routeMatch->getParam('module');
             //if the module have a db configuration use it
             $moduleConfig = include getenv('PROJECT_ROOT') . '/module/' . ucfirst($moduleName) . '/config/module.config.php';
-            if (isset($moduleConfig['db'])) 
-                $config['db'] = $moduleConfig['db'];
+            if (isset($moduleConfig['doctrine'])) 
+                $config['db'] = $moduleConfig['doctrine'];
         }
         return new Adapter($config['db']);
     }
