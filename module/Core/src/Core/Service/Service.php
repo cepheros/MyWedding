@@ -6,6 +6,15 @@ use Zend\ServiceManager\ServiceManagerAwareInterface;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Core\Db\TableGateway;
 
+/**
+ * Classe de Apoio para os serviços
+ *
+ * @category Core
+ * @package Service\Service
+ * @author  Daniel Chaves <daniel@danielchaves.com.br>
+ * 
+ */
+ 
 abstract class Service implements ServiceManagerAwareInterface
 {
 	/**

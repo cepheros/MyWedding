@@ -17,11 +17,13 @@ return array(
 								),
 		'di' => array(),
     'view_helpers' => array(
-        'invokables'=> array(
-            'session' => 'Core\View\Helper\Session',
-        	'homemenus' => 'Core\View\Helper\HomeMenus' 
-        )
-    ),
+'invokables' => array(
+	'session' => 'Core\View\Helper\Session',
+		'homemenus' => 'Core\View\Helper\HomeMenus',
+		'MyHelper' => 'Core\View\Helper\MyHelper',
+		),
+	)
+,
 	'service_manager' => array(
 	    'factories' => array(
 	    		'Session' => function ($sm){
