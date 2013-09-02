@@ -17,4 +17,7 @@ return array(
             './vendor',
         ),
     ),
+	'cache' => array(
+        	'adapter'=> 'filesystem'
+        )
 );

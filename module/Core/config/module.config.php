@@ -19,4 +19,38 @@ return array(
         	'homemenus' => 'Core\View\Helper\HomeMenus' 
         )
     ),
+	'service_manager' => array(
+	    'factories' => array(
+	    		'Session' => function ($sm){
+	    			return new Zend\Session\Container('SysSession');
+	    		},
+	    		'Core\Service\Auth\Admin' => function ($sm){
+	    			$dbAdapter = $sm->get('DbAdapter');
+	    			return new Core\Service\Auth\Admin($dbAdapter);
+	    			
+	    		},
+	    		'Cache' => function ($sm){
+	    			// incluindo o arquivo config para pegar o cache adapter
+	    			$config = include __DIR__ . '/../../../config/application.config.php';
+	    			$cache = StorageFactory::factory(array(
+	    					'adapter' => array(
+	    							'name' => $config['cache']['adapter'],
+	    							'options' => array(
+	    									// tempo de validade do cache
+	    									'ttl' => 1800,
+	    									// adicionando o diretorio data/cache para salvar os caches.
+	    									'cacheDir' => __DIR__ . '/../../../data/cache'
+	    							),
+	    					),
+	    					'plugins' => array(
+	    							'exception_handler' => array('throw_exceptions' => false),
+	    							'Serializer'
+	    					)
+	    			));
+	    			
+	    			return $cache;
+	    		
+	    		} 
+		)
+    )
 );
