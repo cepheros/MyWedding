@@ -5,9 +5,16 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Core\Db\TableGateway;
+use Doctrine\ORM\EntityManager;
+
 
 class ActionController extends AbstractActionController
 {
+	/**
+	 * @var Doctrine\ORM\EntityManager
+	 */
+	protected $em;
+	
 	/**
      * Returns a TableGateway
      *
@@ -34,4 +41,27 @@ class ActionController extends AbstractActionController
     {
         return $this->getServiceLocator()->get($service);
     }
+    
+    public function setEntityManager(EntityManager $em)
+    {
+    	$this->em = $em;
+    }
+    
+    /**
+     * Return a EntityManager
+     *
+     * @return Doctrine\ORM\EntityManager
+     */
+    protected function getEntityManager()
+    {
+    	if ($this->em === null) {
+    		$this->em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+    	}
+    
+    	return $this->em;
+    }
+    
+    
+    
+    
 }
