@@ -11,7 +11,10 @@ return array(
 								'drivers' => array(
 										'Core\Entity' => 'application_entities'
 								)
-								))),
+								),
+						'cache'=> 'Doctrine\Common\Cache\ArrayCache'),
+						'paths' => array(__DIR__ . '/../src/Core/Entity')
+								),
 		'di' => array(),
     'view_helpers' => array(
         'invokables'=> array(
@@ -60,6 +63,7 @@ return array(
 	    		
 	    			return $log;
 	    		},
+	    		    		
 		)
     )
 );
