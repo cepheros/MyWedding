@@ -41,11 +41,7 @@ class ActionController extends AbstractActionController
     {
         return $this->getServiceLocator()->get($service);
     }
-    
-    /**
-     * @var Doctrine\ORM\EntityManager
-     */
-    protected $em;
+   
 
     public function setEntityManager(EntityManager $em)
     {

@@ -12,4 +12,11 @@ return array(
 										'Core\Entity' => 'application_entities'
 								)
 								))),
+		'di' => array(),
+    'view_helpers' => array(
+        'invokables'=> array(
+            'session' => 'Core\View\Helper\Session',
+        	'homemenus' => 'Core\View\Helper\HomeMenus' 
+        )
+    ),
 );

@@ -1,26 +1,91 @@
-<div class="hero-unit">
-    <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
-    <p><?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
-    <p><a class="btn btn-success btn-large" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
-</div>
-
-<div class="row">
-
-    <div class="span4">
-        <h2><?php echo $this->translate('Follow Development') ?></h2>
-        <p><?php echo sprintf($this->translate('Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!'), '<a href="http://framework.zend.com/wiki/display/ZFDEV2/Home">', '</a>', '<a href="http://framework.zend.com/zf2/blog">', '</a>', '<a href="http://framework.zend.com/issues/browse/ZF2">', '</a>') ?></p>
-        <p><a class="btn btn-success" href="http://framework.zend.com/zf2" target="_blank"><?php echo $this->translate('ZF2 Development Portal') ?> &raquo;</a></p>
-    </div>
-
-    <div class="span4">
-        <h2><?php echo $this->translate('Discover Modules') ?></h2>
-        <p><?php echo sprintf($this->translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'), '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
-        <p><a class="btn btn-success" href="http://modules.zendframework.com/" target="_blank"><?php echo $this->translate('Explore ZF2 Modules') ?> &raquo;</a></p>
-   </div>
-
-   <div class="span4">
-       <h2><?php echo $this->translate('Help &amp; Support') ?></h2>
-       <p><?php echo sprintf($this->translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk.2 on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'), '<a href="irc://irc.freenode.net/zftalk.2">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>') ?></p>
-       <p><a class="btn btn-success" href="http://webchat.freenode.net?channels=zftalk.2" target="_blank"><?php echo $this->translate('Ping us on IRC') ?> &raquo;</a></p>
-   </div>
-</div>
+<section id="intro">
+			<div class="container">
+				<div class="row">
+					<div class="span8 offset2 margin25">
+						<div id="carousel_fade_intro" class="carousel slide carousel-fade">
+							<div class="carousel-inner">
+								<div class="active item">
+									<h2>Bem Vindo ao MyWedding</h2>
+								</div>
+								<div class="inactive item">
+									<h2>designed for portfolio, agency</h2>
+								</div>
+								<div class="inactive item">
+									<h2>or app landing page.</h2>
+								</div>
+								<div class="inactive item">
+									<h2>It's easy to customize</h2>
+								</div>
+								<div class="inactive item">
+									<h2>to fit any brand.</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fadeInUp delay animated hidden-phone" id="more">
+				<a href="#services-top" class="m-btn a-btn blue big icn-only"><i class="icon-sort-down icon-3x pull-left"></i></a>
+			</div>
+		</section>
+	
+	
+	
+	<!--start services header-->
+		<section id="services-top">
+	<!--start services-desktop header-->
+			<section id="services-top-desktop" class="visible-desktop" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
+				<h1 class="header">Services</h1>
+				<p class="header">How awesome can it be?</p>
+			</section>
+	<!--start services-mobile header-->
+			<section id="services-top-mobile" class="hidden-desktop">
+				<h1 class="header">Services</h1>
+				<p class="header">How awesome can it be?</p>
+			</section>
+		</section>
+	<!--start services-->
+		<section id="services">
+			<div class="container">
+				<div class="row divide">
+					<div class="span12">
+						<ul class="thumbnails">
+							<li class="span4">
+								<div class="thumbnail">
+									<i class="icon-cogs"></i>
+									<h4>Built with Bootstrap</h4>
+									<span>HTML5 & CSS3 Valide Code</span>
+									<p>Aoccdrnig to a rscheearch at Cmabrigde Uinervtisy, it deosn't mttaer in waht oredr the ltteers
+									in a wrod are, the olny iprmoetnt tihng is taht the frist and lsat ltteer be at the rghit pclae.</p>
+								</div>
+							</li>
+							<li class="span4">
+								<div class="thumbnail">
+									<i class="icon-eye-open"></i>
+									<h4>Retina Ready</h4>
+									<span>Ultra Sharp Graphics</span>
+									<p>Aoccdrnig to a rscheearch at Cmabrigde Uinervtisy, it deosn't mttaer in waht oredr the ltteers
+									in a wrod are, the olny iprmoetnt tihng is taht the frist and lsat ltteer be at the rghit pclae.</p>
+								</div>
+							</li>
+							<li class="span4">
+								<div class="thumbnail">
+									<i class="icon-stethoscope"></i>
+									<h4>Support</h4>
+									<span>It's Free and Always Will Be</span>
+									<p>Aoccdrnig to a rscheearch at Cmabrigde Uinervtisy, it deosn't mttaer in waht oredr the ltteers
+									in a wrod are, the olny iprmoetnt tihng is taht the frist and lsat ltteer be at the rghit pclae.</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="hint1">
+			<a href="http://fortawesome.github.com/Font-Awesome/" target="_blank"><strong>HEADS UP!</strong> Click here to check all <strong>249 icons</strong> that we integrated in this template</a>
+		</section>
+		
+		
+		
+	
