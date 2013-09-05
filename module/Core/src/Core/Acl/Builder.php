@@ -35,23 +35,7 @@ class Builder implements ServiceManagerAwareInterface
         return $this->serviceManager;
     }
     
-    public function setEntityManager(EntityManager $em)
-    {
-        $this->em = $em;
-    }
-    /**
-     * Return a EntityManager
-     *
-     * @return Doctrine\ORM\EntityManager
-     */
-    protected function getEntityManager()
-    {
-        if ($this->em === null) {
-            $this->em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        }
-    
-        return $this->em;
-    }
+   
 
     /**
      * Constroi a ACL
@@ -59,7 +43,7 @@ class Builder implements ServiceManagerAwareInterface
      */
     public function build()
     {
-    	$roles = $this->getEntityManager()->getRepository('Core\Entity\System\Roles');
+    //
         $config = $this->getServiceManager()->get('Config');
         $acl = new Acl();
         foreach ($config['acl']['roles'] as $role => $parent) {

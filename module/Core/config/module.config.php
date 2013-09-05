@@ -30,12 +30,12 @@ return array(
     	    			return new Zend\Session\Container('SysSession');
 	    		    },
 	    		    'Core\Service\Auth\Admin' => function ($sm){
-    	    			$dbAdapter = $sm->get('DbAdapter');
-	    			    return new Core\Service\Auth\Admin($dbAdapter);
+    	    			
+	    			    return new Core\Service\Auth\Admin();
 	    		    },
     	    		'Core\Service\Auth\Users' => function ($sm){
-	        		    $dbAdapter = $sm->get('DbAdapter');
-	        		    return new Core\Service\Auth\Users($dbAdapter);
+	        		  
+	        		    return new Core\Service\Auth\Users();
 	    	   		},
 	    	    	'Cache' => function ($sm){
 	    		    	// incluindo o arquivo config para pegar o cache adapter

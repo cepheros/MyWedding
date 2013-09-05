@@ -49,6 +49,8 @@ class IndexController extends ActionController
      * 
      * Responsável pelo login do cliente no sistema
      * Renderiza formulário de login e trata os dados enviados
+     * @see    \Zend\Mvc\Controller\AbstractActionController
+     * @return Zend\View\Model\ViewModel
      */
     public function loginAction()
     {

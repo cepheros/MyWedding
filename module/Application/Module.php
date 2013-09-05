@@ -10,15 +10,22 @@
 namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
+use Zend\Mvc\MvcEvent;
 
 class Module
 {
     public function onBootstrap($e)
     {
-        $e->getApplication()->getServiceManager()->get('translator');
-        $eventManager        = $e->getApplication()->getEventManager();
-        $moduleRouteListener = new ModuleRouteListener();
-        $moduleRouteListener->attach($eventManager);
+
+        /** @var \Zend\ModuleManager\ModuleManager $moduleManager */
+        $moduleManager = $e->getApplication()->getServiceManager()->get('modulemanager');
+        /** @var \Zend\EventManager\SharedEventManager $sharedEvents */
+        $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
+ 
+        //adiciona eventos ao módulo
+        $sharedEvents->attach('Zend\Mvc\Controller\AbstractActionController', \Zend\Mvc\MvcEvent::EVENT_DISPATCH, array($this, 'mvcPreDispatch'), 100);
+    	
+        
     }
 
     public function getConfig()
