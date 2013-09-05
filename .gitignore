@@ -1,14 +1,27 @@
-vendor/
+# Composer
+vendor/*
 composer.lock
-data/cache
-data/logs
-data/sys
+
+# Local project configuration
+config/autoload/local.php
+config/autoload/*.local.php
+
+# Static files that we don't want to version
+data/cache/*
+data/logs/*
+data/file/*
+_reports
+
+# User stuff
 nbproject
-*~
-.idea
-.DS_Store
-*.pfx
-*.pem
 .buildpath
+.idea
 .project
 .settings
+
+# Mac crap
+.DS_Store
+
+# Other
+._*
+.~lock.*

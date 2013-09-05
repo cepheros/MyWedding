@@ -37,7 +37,7 @@ return array(
 	    		'Cache' => function ($sm){
 	    			// incluindo o arquivo config para pegar o cache adapter
 	    			$config = include __DIR__ . '/../../../config/application.config.php';
-	    			$cache = StorageFactory::factory(array(
+	    			$cache = Zend\Cache\StorageFactory::factory(array(
 	    					'adapter' => array(
 	    							'name' => $config['cache']['adapter'],
 	    							'options' => array(

@@ -3,6 +3,7 @@
 namespace Core\Service\Auth;
 
 use Core\Service\Service;
+use Zend\Authentication\AuthenticationService;
 
 class Admin extends Service
 {
@@ -36,14 +37,20 @@ class Admin extends Service
 	
 		$password = sha1(md5($params['password']));
 		$auth = new AuthenticationService();
-		$authAdapter = new AuthAdapter($this->dbAdapter);
-		$authAdapter
-		->setTableName('tblsystem_users')
-		->setIdentityColumn('userName')
-		->setCredentialColumn('password')
-		->setIdentity($params['userName'])
-		->setCredential($password);
-		$result = $auth->authenticate($authAdapter);
+		
+		$adapter = new DoctrineModule\Authentication\Adapter\DoctrineObject(
+				$this->getLocator()->get('Doctrine\ORM\EntityManager'),
+				'Core\Entity\System\Users',
+				'userName',
+				'password'
+				);
+		
+		$adapter->setIdentityValue($params['userName']);
+		$adapter->setCredentialValue($password);
+		$resultAD = $adapter->authenticate();
+		
+		
+		$result = $auth->authenticate($adapter); 
 	
 		if (! $result->isValid()) {
 			throw new \Exception("Login ou senha inválidos");
@@ -51,7 +58,7 @@ class Admin extends Service
 	
 		//salva o user na sessão
 		$session = $this->getServiceManager()->get('Session');
-		$session->offsetSet('user', $authAdapter->getResultRowObject());
+		$session->offsetSet('userData', $adapter->getResultRowObject());
 	
 		return true;
 	}
@@ -64,7 +71,7 @@ class Admin extends Service
 	public function logout() {
 		$auth = new AuthenticationService();
 		$session = $this->getServiceManager()->get('Session');
-		$session->offsetUnset('user');
+		$session->offsetUnset('userData');
 		$auth->clearIdentity();
 		return true;
 	}
@@ -82,7 +89,7 @@ class Admin extends Service
 		$role = 'visitante';
 		if ($auth->hasIdentity()) {
 			$session = $this->getServiceManager()->get('Session');
-			$user = $session->offsetGet('user');
+			$user = $session->offsetGet('userData');
 			$role = $user->role;
 		}
 	

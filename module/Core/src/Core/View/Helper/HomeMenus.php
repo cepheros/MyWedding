@@ -39,12 +39,21 @@ class HomeMenus extends AbstractHelper implements ServiceLocatorAwareInterface
 	{
 		$helperPluginManager = $this->getServiceLocator();
 		$serviceManager = $helperPluginManager->getServiceLocator();
-		$menus = $serviceManager->get('Doctrine\ORM\EntityManager');
 		
-		$data = $menus->getRepository('Core\Entity\Home\Menus')->findAll();
+		$cache = $serviceManager->get('Cache');
+		if($data = $cache->getItem('menuHomePage')){
+			return $data;
+		}else{
+			$menus = $serviceManager->get('Doctrine\ORM\EntityManager');
+			$data = $menus->getRepository('Core\Entity\Home\Menus')->findAll();
+			$cache->addItem('menuHomePage',$data);
+			return $data;
+			
+		}
 		
 		
-		return $data;
+		
+
 		
 	}
 }
