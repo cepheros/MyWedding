@@ -58,7 +58,7 @@ class Admin extends Service
 	
 		//salva o user na sessão
 		$session = $this->getServiceManager()->get('Session');
-		$session->offsetSet('userData', $adapter->getResultRowObject());
+		$session->offsetSet('sysUserData', $adapter->getResultRowObject());
 	
 		return true;
 	}
@@ -71,7 +71,7 @@ class Admin extends Service
 	public function logout() {
 		$auth = new AuthenticationService();
 		$session = $this->getServiceManager()->get('Session');
-		$session->offsetUnset('userData');
+		$session->offsetUnset('sysUserData');
 		$auth->clearIdentity();
 		return true;
 	}
@@ -89,7 +89,7 @@ class Admin extends Service
 		$role = 'visitante';
 		if ($auth->hasIdentity()) {
 			$session = $this->getServiceManager()->get('Session');
-			$user = $session->offsetGet('userData');
+			$user = $session->offsetGet('sysUserData');
 			$role = $user->role;
 		}
 	

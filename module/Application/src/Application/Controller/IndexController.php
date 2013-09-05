@@ -16,6 +16,7 @@ namespace Application\Controller;
 
 use Core\Controller\ActionController;
 use Zend\View\Model\ViewModel;
+use Application\Form\Login;
 
 
 class IndexController extends ActionController
@@ -31,9 +32,13 @@ class IndexController extends ActionController
      */
     public function indexAction()
     {
-        $this->layout('layout/homepage');
-        $viewModel = new ViewModel();
-
+        
+    	$loginForm = new Login();
+    	$this->layout('layout/homepage');
+        
+        $viewModel = new ViewModel(array(
+        		'loginForm' => $loginForm,        	
+        ));
         return $viewModel;
 
     }
@@ -47,6 +52,12 @@ class IndexController extends ActionController
      */
     public function loginAction()
     {
+    	
+    	$form = new Login();
+    	$request = $this->getRequest();
+    	if($request->isPost()){
+    		
+    	}
 
     }
 

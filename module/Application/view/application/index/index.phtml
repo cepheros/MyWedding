@@ -4,26 +4,18 @@
 					<div class="span8 offset2 margin25">
 						<div id="carousel_fade_intro" class="carousel slide carousel-fade">
 							<div class="carousel-inner">
-								<div class="active item">
-									<h2>Bem Vindo ao MyWedding</h2>
+							<?php $firstBanner = $this->firstBanner(); $i=0; ?>
+								<?php foreach($firstBanner as $banner): ?>
+								<div class="<?php if($i==0) echo 'active'; else echo 'inactive'; ?> item">
+									<h2><?php echo $banner->text ?></h2>
 								</div>
-								<div class="inactive item">
-									<h2>designed for portfolio, agency</h2>
-								</div>
-								<div class="inactive item">
-									<h2>or app landing page.</h2>
-								</div>
-								<div class="inactive item">
-									<h2>It's easy to customize</h2>
-								</div>
-								<div class="inactive item">
-									<h2>to fit any brand.</h2>
-								</div>
+								<?php $i++; endforeach;?>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			
 			<div class="fadeInUp delay animated hidden-phone" id="more">
 				<a href="#services-top" class="m-btn a-btn blue big icn-only"><i class="icon-sort-down icon-3x pull-left"></i></a>
 			</div>
@@ -32,7 +24,7 @@
 	
 	
 	<!--start services header-->
-		<section id="services-top">
+		<section id="how-top">
 	<!--start services-desktop header-->
 			<section id="services-top-desktop" class="visible-desktop" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
 				<h1 class="header">Services</h1>
@@ -82,6 +74,7 @@
 				</div>
 			</div>
 		</section>
+		
 		<section id="hint1">
 			<a href="http://fortawesome.github.com/Font-Awesome/" target="_blank"><strong>HEADS UP!</strong> Click here to check all <strong>249 icons</strong> that we integrated in this template</a>
 		</section>

@@ -60,6 +60,11 @@ return array(
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
         ),
     ),
+    'view_helpers' => array(
+        'invokables' => array(
+             'userLogin' => 'Application\Helper\LoginForm',
+         ),
+    ),
     'translator' => array(
         'locale' => 'en_US',
         'translation_file_patterns' => array(

@@ -86,6 +86,11 @@ class Menus extends OrmEntity
 	}
 	
 	
+	/**
+	 * Configura os filtros dos campos da entidade
+	 *
+	 * @return Zend\InputFilter\InputFilter
+	 */
 	public function getInputFilter()
 	{
 		if (! $this->inputFilter) {

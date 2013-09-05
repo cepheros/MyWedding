@@ -19,13 +19,13 @@
          
          
         <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                                      ->prependFile($this->basePath() . '/home/js/custom.js')
                                       ->prependFile($this->basePath() . '/home/js/bootstrap-lightbox.min.js')
                                       ->prependFile($this->basePath() . '/home/js/jquery.form.js')
                                       ->prependFile($this->basePath() . '/home/js/jquery.stellar.js')
                                       ->prependFile($this->basePath() . '/home/js/jquery.nicescroll.min.js')
                                       ->prependFile($this->basePath() . '/home/js/jquery.easing-1.3.pack.js')
                                       ->prependFile($this->basePath() . '/home/js/retina.js')
-                                      ->prependFile($this->basePath() . '/home/js/custom.js')
                                       ->prependFile($this->basePath() . '/home/js/bootstrap.min.js')
                                       ->prependFile('http://code.jquery.com/jquery-latest.js')
        ?>
@@ -53,6 +53,54 @@
 						?>
 							<li><a href="<?php echo $menu->menuLink ?>"><?php echo $this->escapeHtml($menu->getMenuName())?></a></li>
 						<?php endforeach; ?>	
+						    <li class="divider-vertical"></li>
+						    <li class="dropdown"><a class="dropdown-toggle" href="#login-cliente" data-toggle="dropdown"><?php echo $this->escapeHtml("Entrar")?> <strong class="caret"></strong></a>
+						    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+              				<form id="login" method="post" action="<?php echo $this->basePath().'/application/index/login' ?>" class="form-horizontal well" role="form">
+							<?php  $loginForm = $this->userLogin(); ?>
+              				
+              				<div class="form-group">
+              				<div class="col-lg-12">
+              				<?php 
+              				    $username = $loginForm->get('userName');
+              				    echo $this->formInput($username);              				
+              				?>
+             				</div>
+              				</div>
+              				
+              				<div class="form-group">
+              				<div class="col-lg-12">
+              				<?php 
+              				    $password = $loginForm->get('password');
+              				    echo $this->formInput($password);              				
+              				?>
+              				 
+              				</div>
+              				</div>
+              				
+              				<div class="form-group">
+              				<div class="col-lg-offset-2 col-lg-10">
+              				<?php 
+              				    $submit = $loginForm->get('submit');
+              				    echo $this->formInput($submit);              				
+              				?>
+              				</div>
+              				</div>
+              				
+              				<div class="form-group">
+              				<button type="button" class="btn btn-primary  btn-block">Entrar com Facebook</button>
+              				</div>
+              				
+              				<div class="form-group">
+              				<button type="button" class="btn btn-success  btn-block">Cadastre-se</button>
+              				</div>
+              				
+              				<div class="form-group">
+              				<a href="#">Esqueci minha senha!</a>
+              				</div>
+              				</form>
+            				</div>
+						    </li>
 						</ul>
 					</div>
 				</div>
