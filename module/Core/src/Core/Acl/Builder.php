@@ -38,12 +38,12 @@ class Builder implements ServiceManagerAwareInterface
    
 
     /**
-     * Constroi a ACL
+     * Constroi a ACL de acordo com as entities
+     * @see Core\Entity\System\Roles
      * @return Acl 
      */
     public function build()
     {
-    //
     	$em = $this->getServiceManager()->get('Doctrine\ORM\EntityManager');
     	$roles = $em->getRepository('Core\Entity\System\Roles')->findAll();
     	$resources = $em->getRepository('Core\Entity\System\Resources')->findAll();
