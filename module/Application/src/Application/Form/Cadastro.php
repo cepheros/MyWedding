@@ -124,11 +124,21 @@ class Cadastro extends Form
             'attributes' => array(
                 'type'=>'hidden',
                 'class'=> 'form-control input-lg required',
-                  'id' => 'idPlano'
+                'id' => 'idPlano',
+                'value' => '1'
             ),
-            'options'=> array(
-                'label' => 'Plano Escolhido: '
+
+        ));
+
+        $this->add(array(
+            'name'=>'id',
+            'attributes' => array(
+                'type'=>'hidden',
+                'class'=> 'form-control',
+                'id' => 'idPlano',
+                'value' => ''
             ),
+
         ));
 
 
@@ -141,9 +151,7 @@ class Cadastro extends Form
                 'id' => 'role',
                 'value'=>'SYSUSER'
             ),
-            'options'=> array(
-                'label' => 'Role: '
-            ),
+
         ));
 
 

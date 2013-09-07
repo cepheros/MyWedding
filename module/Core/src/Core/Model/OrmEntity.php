@@ -13,7 +13,7 @@ class OrmEntity implements InputFilterAwareInterface
 	 * @var Zend\InputFilter\InputFilter
 	 */
 	protected $inputFilter;
-	
+
 	/**
 	 * Magic getter to expose protected properties.
 	 *
@@ -24,14 +24,14 @@ class OrmEntity implements InputFilterAwareInterface
 	{
 		return $this->$property;
 	}
-	
-	
+
+
 	public function __set($property, $value)
 	{
 		$this->$property = $value;
 	}
-	
-	
+
+
 	/**
 	 * Convert the object to an array.
 	 *
@@ -41,8 +41,8 @@ class OrmEntity implements InputFilterAwareInterface
 	{
 		return get_object_vars($this);
 	}
-	
-	
+
+
 	/**
 	 * Populate from an array.
 	 *
@@ -57,17 +57,19 @@ class OrmEntity implements InputFilterAwareInterface
 			$this->$property = $value;
 		}
 	}
-	
+
+
+
 	public function setInputFilter(InputFilterInterface $inputFilter)
 	{
 		throw new \Exception("Not used!");
 	}
-	
-	
+
+
 	public function getInputFilter()
 	{
-		
+
 	}
-	
-	
+
+
 }

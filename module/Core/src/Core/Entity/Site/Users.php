@@ -15,7 +15,7 @@ use Zend\InputFilter\Factory as InputFactory;
  * @ORM\Table(name="tblsite_users")
  */
 
-class FirstBanner extends OrmEntity
+class Users extends OrmEntity
 {
 
 	/**
@@ -97,6 +97,10 @@ class FirstBanner extends OrmEntity
 
 
 
+    public function __construct()
+    {
+        $this->dataCasamento = new \DateTime();
+    }
 
 
 
@@ -170,7 +174,7 @@ class FirstBanner extends OrmEntity
 		return $this->dataCasamento;
 	}
 
-	public function setDataCasamento(string $dataCasamento) {
+	public function setDataCasamento(DateTime $dataCasamento) {
 		$this->dataCasamento = $dataCasamento;
 		return $this;
 	}
@@ -209,7 +213,7 @@ class FirstBanner extends OrmEntity
 
 			$inputFilter->add($factory->createInput(array(
 					'name' => 'id',
-					'required '=> true,
+					'required '=> false,
 					'filters' => array(
 							array('name' => 'Int')
 					),
@@ -385,13 +389,15 @@ class FirstBanner extends OrmEntity
 			        array(
 			            'name'    => 'Date',
 			            'options' => array(
-			                'format' => 'dd/mm/yyyy',
+			                'format' => 'd/m/Y',
 			            ),
 			        ),
 			    ),
 			)));
 
+			$this->inputFilter = $inputFilter;
 
+            return $this->inputFilter;
 
 		}
 	}

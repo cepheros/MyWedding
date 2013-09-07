@@ -62,7 +62,7 @@ return array(
 
 	    	    	},
 	    		    'Zend\Log' => function ($sm) {
-	    		        if(!isdir())
+
 	    			    $today= date('Y-m-d');
 	    			    $log = new Zend\Log\Logger();
 	    			    $writer = new Zend\Log\Writer\Stream(__DIR__ . '/../../../data/logs/' . $today .'.log');
