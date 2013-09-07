@@ -34,21 +34,22 @@ class Builder implements ServiceManagerAwareInterface
     {
         return $this->serviceManager;
     }
-    
-   
+
+
 
     /**
      * Constroi a ACL de acordo com as entities
      * @see Core\Entity\System\Roles
-     * @return Acl 
+     * @todo Inclusao das ACLS no Cache
+     * @return Acl
      */
     public function build()
     {
     	$em = $this->getServiceManager()->get('Doctrine\ORM\EntityManager');
     	$roles = $em->getRepository('Core\Entity\System\Roles')->findAll();
     	$resources = $em->getRepository('Core\Entity\System\Resources')->findAll();
-    	
-    	
+
+
         $acl = new Acl();
         foreach ($roles as $role) {
             $acl->addRole(new Role($role->getRoleName()), $role->getRoleParent());
@@ -62,20 +63,20 @@ class Builder implements ServiceManagerAwareInterface
         	foreach($allowed as $allow){
         		$resources = $em->getRepository('Core\Entity\System\Resources')->find($allow->getIdResource());
         		$acl->allow($rolename, $resources->getResourceName());
-        		
+
         	}
-        	
+
         	$denyed = $em->getRepository('Core\Entity\System\Permissions')->findBy(array('idRole'=>$role->getId(),'permission'=>'deny'));
         	foreach($denyed as $deny){
         		$resources = $em->getRepository('Core\Entity\System\Resources')->find($deny->getIdResource());
         		$acl->deny($rolename, $resources->getResourceName());
-        	
+
         	}
-        	
+
         }
-         
-        
-        
+
+
+
         return $acl;
     }
 }

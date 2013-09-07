@@ -21,7 +21,7 @@ return array(
                 ),
             ),
             'application' => array(
-                'type'    => 'segment',
+                'type'    => 'Literal',
                 'options' => array(
                     'route'    => '/application',
                     'defaults' => array(
@@ -29,7 +29,7 @@ return array(
                         'controller'    => 'Index',
                         'action'        => 'index',
                         'module'        => 'application'
-                       
+
                     ),
                 ),
                 'may_terminate' => true,
@@ -45,7 +45,7 @@ return array(
                             'defaults' => array(
                             ),
                         ),
-                        'child_routes' => array( //permite mandar dados pela url 
+                        'child_routes' => array( //permite mandar dados pela url
                             'wildcard' => array(
                                 'type' => 'Wildcard'
                             ),
@@ -75,7 +75,7 @@ return array(
             ),
         ),
     ),
-    
+
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
@@ -93,6 +93,6 @@ return array(
         ),
         'homepage' => 'layout/homepage',
         'layout' => 'layout/layout',
-        'layout/homepage' => 'layout/homepage' 
+        'layout/homepage' => 'layout/homepage'
     ),
 );

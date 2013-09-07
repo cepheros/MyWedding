@@ -5,13 +5,13 @@
 						<div id="carousel_fade_intro" class="carousel slide carousel-fade">
 							<div class="carousel-inner">
 							<?php $firstBanner = $this->firstBanner();
-							      $i=0; 
-							      foreach($firstBanner as $banner): 
+							      $i=0;
+							      foreach($firstBanner as $banner):
 							 ?>
 								<div class="<?php if($i==0) echo 'active'; else echo 'inactive'; ?> item">
 									<h2><?php echo $banner->text ?></h2>
 								</div>
-								<?php $i++; 
+								<?php $i++;
 								      endforeach;
 								?>
 							</div>
@@ -19,12 +19,12 @@
 					</div>
 				</div>
 			</div>
-			
-		
+
+
 		</section>
-	
-	
-	
+
+
+
 	<!--start services header-->
 		<section id="how-top">
 	<!--start services-desktop header-->
@@ -75,12 +75,12 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<section id="hint1">
 			<a href="#contrate-top" target="_blank"><strong>Vamos la!</strong> Clique aqui e faça agora o seu cadastro!</a>
 		</section>
-		
-		
+
+
 		<!--start contact header-->
 		<section id="planos-top">
 	<!--start contact-desktop header-->
@@ -107,11 +107,11 @@
 						 e outros serviços adicionais ao seu plano.</p>
 					</div>
 				</div>
-				<div class="divider"></div>		
-		
-			
+				<div class="divider"></div>
+
+
 		</section>
-		
+
 		<section id="resources-top">
 	<!--start works-desktop header-->
 			<section id="works-top-desktop" class="visible-desktop" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
@@ -165,9 +165,9 @@
 		<section id="hint2">
 			<a href="#contrate-top" target="_blank"><strong>Vamos la!</strong> Clique aqui e faça agora o seu cadastro!</a>
 		</section>
-		
-		
-		
+
+
+
 		<section id="contrate-top">
 	<!--start works-desktop header-->
 			<section id="team-top-desktop" class="visible-desktop" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
@@ -185,20 +185,95 @@
 			<div class="container">
 			    <div class="row divide">
 			        <div class="span12">
-			        
-			        
+			            <form id="cadastro" name="cadastro" action="<?php echo $this->basePath() . '/users/auth/cadastro'?>" method="post" class="form-horizontal" role="form">
+			                <?php $cadastroForm = $this->cadastroForm;
+			                     $field = $cadastroForm->get('role');
+			                     echo $this->formInput($field);
+			                     $field = $cadastroForm->get('idPlano');
+			                     echo $this->formInput($field);
+
+			                ?>
+			                <div class="form-group">
+			                <?php $field = $cadastroForm->get('nomeNoiva')->setLabelAttributes(array('class'=>'col-lg-4 control-label')) ?>
+              				<?php echo $this->formLabel($field) ?>
+              				<div class="col-lg-8">
+              			 	<?php echo $this->formInput($field); ?>
+              				</div>
+              				</div>
+
+              				 <div class="form-group">
+			                <?php $field = $cadastroForm->get('emailNoiva')->setLabelAttributes(array('class'=>'col-lg-4 control-label')) ?>
+              				<?php echo $this->formLabel($field) ?>
+              				<div class="col-lg-8">
+              			 	<?php echo $this->formInput($field); ?>
+              				</div>
+              				</div>
+
+              				 <div class="form-group">
+			                <?php $field = $cadastroForm->get('nomeNoivo')->setLabelAttributes(array('class'=>'col-lg-4 control-label')) ?>
+              				<?php echo $this->formLabel($field) ?>
+              				<div class="col-lg-8">
+              			 	<?php echo $this->formInput($field); ?>
+              				</div>
+              				</div>
+
+              				 <div class="form-group">
+			                <?php $field = $cadastroForm->get('emailNoivo')->setLabelAttributes(array('class'=>'col-lg-4 control-label')) ?>
+              				<?php echo $this->formLabel($field) ?>
+              				<div class="col-lg-8">
+              			 	<?php echo $this->formInput($field); ?>
+              				</div>
+              				</div>
+
+              				<div class="form-group">
+			                <?php $field = $cadastroForm->get('userName')->setLabelAttributes(array('class'=>'col-lg-4 control-label')) ?>
+              				<?php echo $this->formLabel($field) ?>
+              				<div class="col-lg-8">
+              			 	<?php echo $this->formInput($field); ?>
+              				</div>
+              				</div>
+
+              				<div class="form-group">
+			                <?php $field = $cadastroForm->get('password')->setLabelAttributes(array('class'=>'col-lg-4 control-label')) ?>
+              				<?php echo $this->formLabel($field) ?>
+              				<div class="col-lg-8">
+              			 	<?php echo $this->formInput($field); ?>
+              				</div>
+              				</div>
+
+              				<div class="form-group">
+			                <?php $field = $cadastroForm->get('passwordCheck')->setLabelAttributes(array('class'=>'col-lg-4 control-label')) ?>
+              				<?php echo $this->formLabel($field) ?>
+              				<div class="col-lg-8">
+              			 	<?php echo $this->formInput($field); ?>
+              				</div>
+              				</div>
+
+              				<div class="form-group">
+			                <?php $field = $cadastroForm->get('dataCasamento')->setLabelAttributes(array('class'=>'col-lg-4 control-label')) ?>
+              				<?php echo $this->formLabel($field) ?>
+              				<div class="col-lg-8">
+              			 	<?php echo $this->formInput($field); ?>
+              				</div>
+              				</div>
+
+              				<div class="form-group">
+              				<button type="submit" class="btn btn-primary  btn-block">Efetuar Cadastro</button>
+              				</div>
+
+
+			            </form>
 			        </div>
 			   </div>
 			</div>
 		</section>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
+
+
+
+
+
+
+
+
+
+

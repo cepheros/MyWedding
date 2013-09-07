@@ -1,5 +1,5 @@
 {
-	"name" : "Cepheros/MyWedding",
+	"name" : "cepheros/my-wedding",
 	"description" : "Aplicacao para sites de casamentos",
 	"authors" : [{
 			"name" : "Daniel Chaves",
@@ -18,11 +18,11 @@
 		"BSD-3-Clause"
 	],
 	"require" : {
+		"php" : ">=5.3.3",
+		"doctrine/orm" : ">=2.3",
 		"doctrine/doctrine-orm-module" : "master-dev",
 		"symfony/serializer" : "master-dev",
 		"respect/validation" : "master-dev",
-		"php" : ">=5.3.3",
-		"doctrine/orm" : "master-dev",
 		"zendframework/zendframework" : "master-dev",
 		"zendframework/zend-developer-tools" : "master-dev"
 	},

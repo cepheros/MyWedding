@@ -17,6 +17,7 @@ namespace Application\Controller;
 use Core\Controller\ActionController;
 use Zend\View\Model\ViewModel;
 use Application\Form\Login;
+use Application\Form\Cadastro;
 
 
 class IndexController extends ActionController
@@ -26,18 +27,20 @@ class IndexController extends ActionController
     /**
      * Index Controller
      * (non-PHPdoc)
-     * 
+     *
      * @see    \Zend\Mvc\Controller\AbstractActionController::indexAction()
      * @return Zend\View\Model\ViewModel
      */
     public function indexAction()
     {
-        
+
     	$loginForm = new Login();
+    	$cadastroForm = new Cadastro();
     	$this->layout('layout/homepage');
-        
+
         $viewModel = new ViewModel(array(
-        		'loginForm' => $loginForm,        	
+        		'loginForm'   => $loginForm,
+                'cadastroForm'=> $cadastroForm,
         ));
         return $viewModel;
 
@@ -46,7 +49,7 @@ class IndexController extends ActionController
 
     /**
      * loginAction
-     * 
+     *
      * Responsável pelo login do cliente no sistema
      * Renderiza formulário de login e trata os dados enviados
      * @see    \Zend\Mvc\Controller\AbstractActionController
@@ -54,11 +57,11 @@ class IndexController extends ActionController
      */
     public function loginAction()
     {
-    	
+
     	$form = new Login();
     	$request = $this->getRequest();
     	if($request->isPost()){
-    		
+
     	}
 
     }
@@ -66,6 +69,18 @@ class IndexController extends ActionController
 
     public function sendContactAction()
     {
+
+    }
+
+    public function cadastroAction()
+    {
+
+        $form = new Cadastro();
+        $request = $this->getRequest();
+        if($request->isPost()){
+
+
+        }
 
     }
 

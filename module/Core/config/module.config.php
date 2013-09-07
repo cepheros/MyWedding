@@ -30,11 +30,11 @@ return array(
     	    			return new Zend\Session\Container('SysSession');
 	    		    },
 	    		    'Core\Service\Auth\Admin' => function ($sm){
-    	    			
+
 	    			    return new Core\Service\Auth\Admin();
 	    		    },
     	    		'Core\Service\Auth\Users' => function ($sm){
-	        		  
+
 	        		    return new Core\Service\Auth\Users();
 	    	   		},
 	    	    	'Cache' => function ($sm){
@@ -56,12 +56,13 @@ return array(
 	    					    )
 	    			    	)
 	    			    );
-	    			
-	    			    $cache->clearExpired();	    			
+
+	    			    $cache->clearExpired();
 	    			    return $cache;
-	    		
+
 	    	    	},
 	    		    'Zend\Log' => function ($sm) {
+	    		        if(!isdir())
 	    			    $today= date('Y-m-d');
 	    			    $log = new Zend\Log\Logger();
 	    			    $writer = new Zend\Log\Writer\Stream(__DIR__ . '/../../../data/logs/' . $today .'.log');

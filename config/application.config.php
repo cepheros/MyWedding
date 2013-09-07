@@ -3,10 +3,11 @@ return array(
     'modules' => array(
         'Application',
         'Core',
+        'Users',
      //  'Skel',
 		'ZendDeveloperTools',
 		'DoctrineModule',
-		'DoctrineORMModule','Users'
+		'DoctrineORMModule'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
