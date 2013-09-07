@@ -44,26 +44,38 @@ class Builder implements ServiceManagerAwareInterface
     public function build()
     {
     //
-        $config = $this->getServiceManager()->get('Config');
+    	$em = $this->getServiceManager()->get('Doctrine\ORM\EntityManager');
+    	$roles = $em->getRepository('Core\Entity\System\Roles')->findAll();
+    	$resources = $em->getRepository('Core\Entity\System\Resources')->findAll();
+    	
+    	
         $acl = new Acl();
-        foreach ($config['acl']['roles'] as $role => $parent) {
-            $acl->addRole(new Role($role), $parent);
+        foreach ($roles as $role) {
+            $acl->addRole(new Role($role->getRoleName()), $role->getRoleParent());
         }
-        foreach ($config['acl']['resources'] as $r) {
-            $acl->addResource(new Resource($r));
+        foreach ($resources as $r) {
+            $acl->addResource(new Resource($r->getResourceName()));
         }
-        foreach ($config['acl']['privilege'] as $role => $privilege) {
-            if (isset($privilege['allow'])) {
-                foreach ($privilege['allow'] as $p) {
-                    $acl->allow($role, $p);
-                }
-            }
-            if (isset($privilege['deny'])) {
-                foreach ($privilege['deny'] as $p) {
-                    $acl->deny($role, $p);
-                }
-            }
+        foreach($roles as $role){
+        	$rolename = $role->getRoleName();
+        	$allowed = $em->getRepository('Core\Entity\System\Permissions')->findBy(array('idRole'=>$role->getId(),'permission'=>'allow'));
+        	foreach($allowed as $allow){
+        		$resources = $em->getRepository('Core\Entity\System\Resources')->find($allow->getIdResource());
+        		$acl->allow($rolename, $resources->getResourceName());
+        		
+        	}
+        	
+        	$denyed = $em->getRepository('Core\Entity\System\Permissions')->findBy(array('idRole'=>$role->getId(),'permission'=>'deny'));
+        	foreach($denyed as $deny){
+        		$resources = $em->getRepository('Core\Entity\System\Resources')->find($deny->getIdResource());
+        		$acl->deny($rolename, $resources->getResourceName());
+        	
+        	}
+        	
         }
+         
+        
+        
         return $acl;
     }
 }

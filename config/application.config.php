@@ -6,7 +6,7 @@ return array(
      //  'Skel',
 		'ZendDeveloperTools',
 		'DoctrineModule',
-		'DoctrineORMModule'
+		'DoctrineORMModule','Users'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(

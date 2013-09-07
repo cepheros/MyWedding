@@ -4,21 +4,23 @@
 					<div class="span8 offset2 margin25">
 						<div id="carousel_fade_intro" class="carousel slide carousel-fade">
 							<div class="carousel-inner">
-							<?php $firstBanner = $this->firstBanner(); $i=0; ?>
-								<?php foreach($firstBanner as $banner): ?>
+							<?php $firstBanner = $this->firstBanner();
+							      $i=0; 
+							      foreach($firstBanner as $banner): 
+							 ?>
 								<div class="<?php if($i==0) echo 'active'; else echo 'inactive'; ?> item">
 									<h2><?php echo $banner->text ?></h2>
 								</div>
-								<?php $i++; endforeach;?>
+								<?php $i++; 
+								      endforeach;
+								?>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			
-			<div class="fadeInUp delay animated hidden-phone" id="more">
-				<a href="#services-top" class="m-btn a-btn blue big icn-only"><i class="icon-sort-down icon-3x pull-left"></i></a>
-			</div>
+		
 		</section>
 	
 	
@@ -27,13 +29,13 @@
 		<section id="how-top">
 	<!--start services-desktop header-->
 			<section id="services-top-desktop" class="visible-desktop" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
-				<h1 class="header">Services</h1>
-				<p class="header">How awesome can it be?</p>
+				<h1 class="header">Como Funciona?</h1>
+				<p class="header">Simples e sem complicações!</p>
 			</section>
 	<!--start services-mobile header-->
 			<section id="services-top-mobile" class="hidden-desktop">
-				<h1 class="header">Services</h1>
-				<p class="header">How awesome can it be?</p>
+				<h1 class="header">Como Funciona?</h1>
+				<p class="header">Simples e sem complicações</p>
 			</section>
 		</section>
 	<!--start services-->
@@ -44,29 +46,28 @@
 						<ul class="thumbnails">
 							<li class="span4">
 								<div class="thumbnail">
-									<i class="icon-cogs"></i>
-									<h4>Built with Bootstrap</h4>
-									<span>HTML5 & CSS3 Valide Code</span>
-									<p>Aoccdrnig to a rscheearch at Cmabrigde Uinervtisy, it deosn't mttaer in waht oredr the ltteers
-									in a wrod are, the olny iprmoetnt tihng is taht the frist and lsat ltteer be at the rghit pclae.</p>
+									<i class="icon-tasks"></i>
+									<h4>Cadastre-se</h4>
+									<span>Escolha um plano e começe o seu site</span>
+									<p>Você escolhe o melhor plano, o desenho do seu web site, o nome, e todas as configurações</p>
 								</div>
 							</li>
 							<li class="span4">
 								<div class="thumbnail">
-									<i class="icon-eye-open"></i>
-									<h4>Retina Ready</h4>
-									<span>Ultra Sharp Graphics</span>
-									<p>Aoccdrnig to a rscheearch at Cmabrigde Uinervtisy, it deosn't mttaer in waht oredr the ltteers
-									in a wrod are, the olny iprmoetnt tihng is taht the frist and lsat ltteer be at the rghit pclae.</p>
+									<i class="icon-sitemap"></i>
+									<h4>Coloque Conteúdo</h4>
+									<span>Fotos, Textos, Informações</span>
+									<p>Você pode colocar textos, galerias de fotos, listas de presentes, quotas de lua de mel,
+									Informações sobre Cerimonia, Festas, Chás e demais informações dessa data tão especial</p>
 								</div>
 							</li>
 							<li class="span4">
 								<div class="thumbnail">
-									<i class="icon-stethoscope"></i>
-									<h4>Support</h4>
-									<span>It's Free and Always Will Be</span>
-									<p>Aoccdrnig to a rscheearch at Cmabrigde Uinervtisy, it deosn't mttaer in waht oredr the ltteers
-									in a wrod are, the olny iprmoetnt tihng is taht the frist and lsat ltteer be at the rghit pclae.</p>
+									<i class="icon-group"></i>
+									<h4>Divulgue</h4>
+									<span>Mostre aos amigos</span>
+									<p>Nossa ferramenta automatizada ajuda você a divulgar o seu casamento nas redes sociais, e-mail, SMS tudo com
+									muita facilidade pra você se preparar melhor para o seu grande dia!</p>
 								</div>
 							</li>
 						</ul>
@@ -76,8 +77,127 @@
 		</section>
 		
 		<section id="hint1">
-			<a href="http://fortawesome.github.com/Font-Awesome/" target="_blank"><strong>HEADS UP!</strong> Click here to check all <strong>249 icons</strong> that we integrated in this template</a>
+			<a href="#contrate-top" target="_blank"><strong>Vamos la!</strong> Clique aqui e faça agora o seu cadastro!</a>
 		</section>
+		
+		
+		<!--start contact header-->
+		<section id="planos-top">
+	<!--start contact-desktop header-->
+			<section id="contact-top-desktop" class="visible-desktop" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
+				<h1 class="header">Planos</h1>
+				<p class="header">Preços e Informações</p>
+			</section>
+	<!--start contact-mobile header-->
+			<section id="contact-top-mobile" class="hidden-desktop">
+				<h1 class="header">Planos</h1>
+				<p class="header">Preços e Informações</p>
+			</section>
+		</section>
+	<!--start contact-->
+		<section id="planos">
+			<div class="container">
+				<div class="row divide">
+					<div class="span8 offset2">
+						<h1>Preço Único</h1>
+						<h4>Do início ao fim a nossa taxa é uma só!</h4>
+						<p class="center">Aqui você paga somente uma vez uma taxa de R$ 29,90 para manter seu site do dia do seu cadastro até
+						5 dias após a data informada do seu casamento, seja esse tempo 1 mês ou 1 ano, você não pagará nada mais para manter
+						seu site no MyWedding, somente pagará caso queira utilizar de serviços adicionais, como o Envio de SMS, Newsletters
+						 e outros serviços adicionais ao seu plano.</p>
+					</div>
+				</div>
+				<div class="divider"></div>		
+		
+			
+		</section>
+		
+		<section id="resources-top">
+	<!--start works-desktop header-->
+			<section id="works-top-desktop" class="visible-desktop" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
+				<h1 class="header">Recursos</h1>
+				<p class="header">Como podemos te ajudar?</p>
+			</section>
+	<!--start works-mobile header-->
+			<section id="works-top-mobile" class="hidden-desktop">
+				<h1 class="header">Recursos</h1>
+				<p class="header">Como podemos te ajudar?</p>
+			</section>
+		</section>
+	<!--start works-->
+		<section id="works">
+			<div class="container">
+			    <div class="row divide">
+			        <div class="span12">
+			           <ul class="thumbnails">
+							<li class="span4">
+							    <ul>
+							        <li>Layouts Exclusivos</li>
+							        <li>Lembretes por SMS</li>
+							        <li>Lembretes por E-mail</li>
+							        <li>Confirmação de Convidados(RSVP)</li>
+							        <li>Lista Personalizada de Presentes</li>
+						    	</ul>
+							</li>
+							<li class="span4">
+								<ul>
+							        <li>Informações da Cerimônia</li>
+							        <li>Mapas e Rotas</li>
+							        <li>Blog Integrado</li>
+							        <li>Galerias de Fotos</li>
+							        <li>Proteção por senha</li>
+						    	</ul>
+							</li>
+							<li class="span4">
+								   <ul>
+							        <li>Integração com o Facebook</li>
+							        <li>Integraçâo com o Twitter</li>
+							        <li>Integração com Google+</li>
+							        <li>Integração com o Flickr</li>
+							        <li>Aplicativos iOS e Android (Em Breve)</li>
+						    	</ul>
+							</li>
+						</ul>
+			        </div>
+			    </div>
+			</div>
+		</section>
+		<section id="hint2">
+			<a href="#contrate-top" target="_blank"><strong>Vamos la!</strong> Clique aqui e faça agora o seu cadastro!</a>
+		</section>
+		
+		
+		
+		<section id="contrate-top">
+	<!--start works-desktop header-->
+			<section id="team-top-desktop" class="visible-desktop" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
+				<h1 class="header">Contrate</h1>
+				<p class="header">Preencha o cadastro</p>
+			</section>
+	<!--start works-mobile header-->
+			<section id="Contrate" class="hidden-desktop">
+				<h1 class="header">Recursos</h1>
+				<p class="header">Preencha o cadastro</p>
+			</section>
+		</section>
+	<!--start works-->
+		<section id="works">
+			<div class="container">
+			    <div class="row divide">
+			        <div class="span12">
+			        
+			        
+			        </div>
+			   </div>
+			</div>
+		</section>
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
