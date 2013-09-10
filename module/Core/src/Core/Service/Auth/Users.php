@@ -4,6 +4,8 @@ namespace Core\Service\Auth;
 
 use Core\Service\Service;
 use Zend\Authentication\AuthenticationService;
+use Doctrine\ORM\EntityManager;
+use DoctrineModule\Authentication\Adapter\ObjectRepository as DoctrineAdapter;
 
 class Users extends Service
 {
@@ -34,33 +36,45 @@ class Users extends Service
 		if (!isset($params['userName']) || !isset($params['password'])) {
 			throw new \Exception("Parâmetros inválidos");
 		}
-	
+		
 		$password = sha1(md5($params['password']));
-		$auth = new AuthenticationService();
 		
-		$adapter = new DoctrineModule\Authentication\Adapter\DoctrineObject(
-				$this->getLocator()->get('Doctrine\ORM\EntityManager'),
-				'Core\Entity\Site\Users',
-				'userName',
-				'password'
-				);
+		$entityManager = $this->getEntityManager();
 		
-		$adapter->setIdentityValue($params['userName']);
+		$adapter = new DoctrineAdapter(array(
+		    'objectManager' => $entityManager,
+            'identityClass' => 'Core\Entity\Site\Users',
+            'identityProperty' => 'userName',
+            'credentialProperty' => 'password',
+            
+		));
+		
+		$adapter->setIdentityValue(($params['userName']));
 		$adapter->setCredentialValue($password);
-		$resultAD = $adapter->authenticate();
+		
+		$authService = new AuthenticationService();
+		$authService->setAdapter($adapter);
 		
 		
-		$result = $auth->authenticate($adapter); 
+		$authResult = $authService->authenticate();
+		
+		
 	
-		if (! $result->isValid()) {
+		if (! $authResult->isValid()) {
 			throw new \Exception("Login ou senha inválidos");
+		}else{
+	
+		$user = $this->getEntityManager()->getRepository('Core\Entity\Site\Users')
+		    ->findOneBy(array(
+		        'userName' => $params['userName'],
+		        'password' => $password
+		    ));
+		$session = $this->getServiceManager()->get('Session');
+		$session->offsetSet('sysUserData',$user);
+		return true;
 		}
 	
-		//salva o user na sessão
-		$session = $this->getServiceManager()->get('Session');
-		$session->offsetSet('sysUserData', $adapter->getResultRowObject());
-	
-		return true;
+		
 	}
 	
 	/**
@@ -85,6 +99,7 @@ class Users extends Service
 	 */
 	public function authorize($moduleName, $controllerName, $actionName)
 	{
+	     
 		$auth = new AuthenticationService();
 		$role = 'visitante';
 		if ($auth->hasIdentity()) {

@@ -22,10 +22,22 @@ return array(
 						'homemenus' => 'Core\View\Helper\HomeMenus',
 						'firstBanner' => 'Core\View\Helper\FirstBanner',
 						'MyHelper' => 'Core\View\Helper\MyHelper',
+				        'AlertMessage' => 'Core\View\Helper\Messages'
 				),
 		),
+        'translator' => array(
+        'locale' => 'pt_BR',
+        'translation_file_patterns' => array(
+            array(
+                'type'     => 'phparray',
+                'base_dir' => __DIR__ . '/../language',
+                'pattern'  => '%s.php',
+            ),
+        ),
+    ),
 	    'service_manager' => array(
 	        'factories' => array(
+	                'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
 	    		    'Session' => function ($sm){
     	    			return new Zend\Session\Container('SysSession');
 	    		    },

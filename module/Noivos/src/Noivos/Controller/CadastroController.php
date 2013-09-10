@@ -49,7 +49,7 @@ class CadastroController extends ActionController
                 $this->getService('Zend\Log')->info("Novo Usuário Criado no Sistema");
                 return $this->redirect()->toUrl('/noivos/index/login/new/true');
             }else{
-            return new viewModel(array(
+            return new ViewModel(array(
                     'form'=>$form,
                     'messages' => $form->getMessages(),
                 ));

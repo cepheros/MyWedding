@@ -28,7 +28,7 @@ class IndexController extends ActionController
      * Index Controller
      * (non-PHPdoc)
      *
-     * @see    \Zend\Mvc\Controller\AbstractActionController::indexAction()
+     * @see    Zend\Mvc\Controller\AbstractActionController::indexAction()
      * @return Zend\View\Model\ViewModel
      */
     public function indexAction()

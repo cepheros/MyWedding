@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManager;
 class ActionController extends AbstractActionController
 {
 	/**
-	 * @var Doctrine\ORM\EntityManager
+	 * @var EntityManager
 	 */
 	protected $em;
 	
@@ -50,7 +50,7 @@ class ActionController extends AbstractActionController
     /**
      * Return a EntityManager
      *
-     * @return Doctrine\ORM\EntityManager
+     * @return EntityManager
      */
     protected function getEntityManager()
     {

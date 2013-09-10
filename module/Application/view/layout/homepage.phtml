@@ -56,7 +56,7 @@
 						    <li class="divider-vertical"></li>
 						    <li class="dropdown"><a class="dropdown-toggle" href="#login-cliente" data-toggle="dropdown"><?php echo $this->escapeHtml("Entrar")?> <strong class="caret"></strong></a>
 						    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-              				<form id="login" method="post" action="<?php echo $this->basePath().'/application/index/login' ?>" class="form-horizontal well" role="form">
+              				<form id="login" method="post" action="<?php echo $this->basePath().'/application/auth/login' ?>" class="form-horizontal well" role="form">
 							<?php  $loginForm = $this->userLogin(); ?>
 
               				<div class="form-group">
