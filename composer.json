@@ -24,7 +24,11 @@
 		"symfony/serializer" : "master-dev",
 		"respect/validation" : "master-dev",
 		"zendframework/zendframework" : "master-dev",
-		"zendframework/zend-developer-tools" : "master-dev"
+		"zendframework/zend-developer-tools" : "master-dev",
+		"opauth/opauth" : "*",
+		"opauth/facebook" : "*",
+		"opauth/twitter" : "*",
+		"opauth/google" : "*"
 	},
 	"minimum-stability" : "dev"
 }

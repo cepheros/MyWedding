@@ -1,0 +1,14 @@
+<?php
+return array(
+	'oauth' => array(
+	    'path'          => '/application/auth/',
+	    'callback_url'  => '{path}callback',
+	    'security_salt' => sha1(md5('YOURKEY')),
+	    'Strategy' => array(
+		    'Facebook' => array(
+	    	    'app_id'     => 'YOUR_APP_ID',
+		        'app_secret' => 'YOUR_APP_SECRET'
+	    )
+	)
+)    
+);

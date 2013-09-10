@@ -34,13 +34,32 @@ class AuthController extends ActionController
 	{
 
 		$loginForm = new Login();
-		$this->layout('layout/homepage');
+		//$this->layout('layout/homepage');
 
 		$viewModel = new ViewModel(array(
 				'loginForm' => $loginForm,
 		));
 		return $viewModel;
 
+	}
+	
+	
+	public function facebookAction(){
+	   
+	     $config = $this->getServiceLocator()->get('config'); 
+	    
+	      $Auth = new \Opauth($config['oauth']);
+	   
+	    
+	}
+	
+	public function twitterAction(){
+	
+	    $config = $this->getServiceLocator()->get('config');
+	     
+	    $Auth = new \Opauth($config['oauth']);
+	
+	     
 	}
 
 
@@ -68,7 +87,11 @@ class AuthController extends ActionController
 	        
 	    ));
 	    
-	    $this->redirect()->toUrl("/application/index/index/auth/true");
+	    if($auth){
+	        $this->getService('Zend\Log')->info("Login Efetuado");
+	        $this->redirect()->toUrl("/application/index/index/auth/true");
+	    
+	    }
 	    
 		 
 		
@@ -115,6 +138,48 @@ class AuthController extends ActionController
 	        return $this->redirect()->toUrl('/');
 	    }
 	
+	}
+	
+	
+	public function logoutAction(){
+	    $service = $this->getService("Core\Service\Auth\Users");
+	    if($service->logout()){
+	        $this->getService('Zend\Log')->info("Logout Efetuado");
+	        return $this->redirect()->toUrl('/');
+	        
+	    }
+	    
+	    
+	    
+	}
+	
+	public function callbackAction(){
+	    
+	    $config = $this->getServiceLocator()->get('config');
+	     
+	    $Opauth = new \Opauth($config['oauth']);
+	    
+	    $response = array();
+	    
+	    $request = $this->getRequest();
+	    if($request->isPost()){
+	        $data = $request->getPost();
+	        $response =   unserialize(base64_decode( $data['opauth'] ));
+	        
+	    }
+	    
+	    if($request->isGet()){
+	        $data = $request->getQuery();
+	        $response =   unserialize(base64_decode( $data['opauth'] ));
+	    }
+	    
+        if (array_key_exists('error', $response)) {
+            throw new \Exception("Erro no Plugion");
+        }
+        
+        var_dump($response);
+
+	    
 	}
 
 
