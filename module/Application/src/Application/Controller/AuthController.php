@@ -159,28 +159,63 @@ class AuthController extends ActionController
 	     
 	    $Opauth = new \Opauth($config['oauth']);
 	    
-	    $response = array();
+	  $response = null;
 	    
-	    $request = $this->getRequest();
-	    if($request->isPost()){
-	        $data = $request->getPost();
-	        $response =   unserialize(base64_decode( $data['opauth'] ));
-	        
-	    }
-	    
-	    if($request->isGet()){
-	        $data = $request->getQuery();
-	        $response =   unserialize(base64_decode( $data['opauth'] ));
-	    }
+	   switch ($Opauth->env['callback_transport']) {
+            case 'session':
+                if (isset($_SESSION['opauth'])) {
+                    $response = $_SESSION['opauth'];
+                    unset($_SESSION['opauth']);
+                }
+                break;
+            case 'post':
+                if (isset($_POST['opauth']))
+                    $response = unserialize(base64_decode($_POST['opauth']));
+                break;
+            case 'get':
+                if (isset($_GET['opauth']))
+                    $response = unserialize(base64_decode($_GET['opauth']));
+                break;
+        }
+        
+        if (!is_array($response) || $response == null) {
+            throw  new \Exception("Resposta Invalida");
+        }
 	    
         if (array_key_exists('error', $response)) {
             throw new \Exception("Erro no Plugion");
         }
         
-        var_dump($response);
-
-	    
+        if(!$opauth->validate(sha1(print_r($response['auth'], true)), $response['timestamp'], $response['signature'], $reason)){
+            throw new \Exception("Erro no Plugion");
+        }
+        
+       
+            $dados = $this->getEntityManager()->getRepository('Core\Entity\Site\FacebookAuth')->findOneBy(array('uid' => $response['auth']['uid']));
+            if($dados->getIdUser() <> ''){
+                                
+            }else{
+                
+                $em = $this->getEntityManager()->getRepository('Core\Entity\Site\FacebookAuth');
+                $FBData = new \Core\Entity\Site\FacebookAuth;
+                $FBData->setUid($response['auth']['uid']);
+                $FBData->setName($response['auth']['info']['name']);
+                $FBData->setImage($response['auth']['info']['image']);
+                $FBData->setFacebookUrl($response['auth']['info']['urls']['facebook']);
+                $FBData->setToken($response['auth']['credentials']['token']);
+                $FBData->setExpiresToken($response['auth']['credentials']['expires']);
+                $FBData->setGender($response['auth']['raw']['gender']);
+                $FBData->setTimezone($response['auth']['raw']['timezone']);
+                $FBData->setLocale($response['auth']['raw']['locale']);
+                $FBData->setSignature($response['signature']);
+                $this->getEntityManager()->persist($FBData);
+                $this->getEntityManager()->flush();
+                
+                echo $FBData->getId;
+                
+            }
 	}
-
-
+            
+       
+	
 }

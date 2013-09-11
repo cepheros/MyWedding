@@ -20,6 +20,7 @@ class Users extends OrmEntity
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity="FacebookAuth", inversedBy="idUser")
      * @var integer
      */
 
